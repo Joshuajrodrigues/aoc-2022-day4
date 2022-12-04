@@ -998,10 +998,9 @@ let input = `15-60,14-59
 61-68,9-62
 27-55,28-48
 22-88,20-23`;
-
+console.time('start');
 let arrayfy = input.split('\n');
-// [ 1,4 ] [3, 55 ]
-// [ 27, 55 ][ 28, 48 ]
+
 let count = 0;
 const countFullyContains = (arrayPair) => {
   ///console.log(arrayPair);
@@ -1017,12 +1016,10 @@ const countFullyContains = (arrayPair) => {
   ) {
     count += 1;
     return;
-  } else {
-    console.log(newA, newB);
   }
 };
-
 for (let i = 0; i < arrayfy.length; i++) {
   countFullyContains(arrayfy[i].split(','));
 }
 console.log(count);
+console.timeEnd('start');
