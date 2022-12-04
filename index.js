@@ -998,9 +998,10 @@ let input = `15-60,14-59
 61-68,9-62
 27-55,28-48
 22-88,20-23`;
-`1-3,2-5`;
+
 let arrayfy = input.split('\n');
-// [ 28, 48 ] [ 27, 55 ]
+// [ 1,4 ] [3, 55 ]
+// [ 27, 55 ][ 28, 48 ]
 let count = 0;
 const countFullyContains = (arrayPair) => {
   ///console.log(arrayPair);
@@ -1009,13 +1010,15 @@ const countFullyContains = (arrayPair) => {
   const newA = range1.map(Number);
   const newB = range2.map(Number);
   if (
-    (newA[0] <= newB[0] && newB[0] <= newA[1]) ||
-    (newA[0] >= newB[0] && newB[0] <= newA[1])
+    (newA[0] >= newB[0] && newA[0] <= newB[1]) ||
+    (newA[1] >= newB[0] && newA[1] <= newB[1]) ||
+    (newB[0] >= newA[0] && newB[0] <= newA[1]) ||
+    (newB[1] >= newA[0] && newB[1] <= newA[1])
   ) {
-    console.log(newA, newB);
     count += 1;
     return;
   } else {
+    console.log(newA, newB);
   }
 };
 
